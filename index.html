@@ -3,78 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azərbaycan Rayonları - Hava Durumu</title>
+    <title>Azərbaycan İnteraktiv Rayon və Kənd Xəritəsi</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <select id="regionSelect" class="city-select" onchange="changeRegion()">
-                <option value="imishli" selected>📍 İmişli</option>
-                <option value="baku">📍 Bakı</option>
-                <option value="ganja">📍 Gəncə</option>
-                <option value="sumqayit">📍 Sumqayıt</option>
-                <option value="mingachevir">📍 Mingəçevir</option>
-                <option value="shirvan">📍 Şirvan</option>
-                <option value="nakhchivan">📍 Naxçıvan</option>
-                <option value="lankaran">📍 Lənkəran</option>
-                <option value="sheki">📍 Şəki</option>
-                <option value="guba">📍 Quba</option>
-                <option value="gusar">📍 Qusar</option>
-                <option value="khachmaz">📍 Xaçmaz</option>
-                <option value="gabala">📍 Qəbələ</option>
-                <option value="ismayilli">📍 İsmayıllı</option>
-                <option value="shamakhi">📍 Şamaxı</option>
-                <option value="agdam">📍 Ağdam</option>
-                <option value="agjabadi">📍 Ağcabədi</option>
-                <option value="barda">📍 Bərdə</option>
-                <option value="tartar">📍 Tərtər</option>
-                <option value="fuzuli">📍 Füzuli</option>
-                <option value="jabrayil">📍 Cəbrayıl</option>
-                <option value="zangilan">📍 Zəngilan</option>
-                <option value="gubadli">📍 Qubadlı</option>
-                <option value="lachin">📍 Laçın</option>
-                <option value="kalbajar">📍 Kəlbəcər</option>
-                <option value="shusha">📍 Şuşa</option>
-                <option value="khankendi">📍 Xankəndi</option>
-                <option value="khojaly">📍 Xocalı</option>
-                <option value="agstafa">📍 Ağstafa</option>
-                <option value="gazakh">📍 Qazax</option>
-                <option value="Tovuz">📍 Tovuz</option>
-                <option value="shamkir">📍 Şəmkir</option>
-                <option value="dashkasan">📍 Daşkəsən</option>
-                <option value="gadabay">📍 Gədəbəy</option>
-                <option value="geygel">📍 Göygöl</option>
-                <option value="goranboy">📍 Goranboy</option>
-                <option value="naftalan">📍 Naftalan</option>
-                <option value="yevlakh">📍 Yevlax</option>
-                <option value="agdash">📍 Ağdaş</option>
-                <option value="goychay">📍 Göyçay</option>
-                <option value="kurdamir">📍 Kürdəmir</option>
-                <option value="uajar">📍 Ucar</option>
-                <option value="zardab">📍 Zərdab</option>
-                <option value="salyan">📍 Salyan</option>
-                <option value="neftchala">📍 Neftçala</option>
-                <option value="bilasuvar">📍 Biləsuvar</option>
-                <option value="jalilabad">📍 Cəlilabad</option>
-                <option value="masalli">📍 Masallı</option>
-                <option value="yardimli">📍 Yardımlı</option>
-                <option value="lerik">📍 Lerik</option>
-                <option value="astara">📍 Astara</option>
-                <option value="ojuz">📍 Oğuz</option>
-                <option value="gah">📍 Qax</option>
-                <option value="zagatala">📍 Zaqatala</option>
-                <option value="balaken">📍 Balakən</option>
-                <option value="khizi">📍 Xızı</option>
-                <option value="siyazan">📍 Siyəzən</option>
-                <option value="shabran">📍 Şabran</option>
-                <option value="hajigabul">📍 Hacıqabul</option>
-                <option value="beylagan">📍 Beyləqan</option>
-            </select>
-            <p id="current-date" class="date-text">Yüklənir...</p>
+    <div class="app-container">
+        <!-- Sol tərəf: İnteraktiv Xəritə Sahəsi -->
+        <div class="map-section">
+            <h1>Azərbaycan Rayon Xəritəsi</h1>
+            <p class="hint">Rayonların üzərinə gəlin və ya toxunun</p>
+            
+            <div class="map-wrapper" id="mapWrapper">
+                <!-- SVG Xəritə Nümunəsi (İmişli, Bakı, Gəncə və s. əsas rayonlar üçün vektor qrafika) -->
+                <svg viewBox="0 0 800 600" class="az-map" id="azMap">
+                    <!-- İmişli Rayonu -->
+                    <path class="region" data-id="imishli" data-name="İmişli rayonu" 
+                          d="M350,380 Q370,370 390,390 Q400,410 380,430 Q360,420 350,380 Z" 
+                          fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+                    
+                    <!-- Bakı Şəhəri -->
+                    <path class="region" data-id="baku" data-name="Bakı şəhəri" 
+                          d="M580,320 Q600,310 610,330 Q600,350 580,340 Z" 
+                          fill="#0ea5e9" stroke="#ffffff" stroke-width="2"/>
+
+                    <!-- Gəncə Şəhəri -->
+                    <path class="region" data-id="ganja" data-name="Gəncə şəhəri" 
+                          d="M220,280 Q240,270 250,290 Q240,310 220,300 Z" 
+                          fill="#38bdf8" stroke="#ffffff" stroke-width="2"/>
+                          
+                    <!-- Qəbələ Rayonu -->
+                    <path class="region" data-id="gabala" data-name="Qəbələ rayonu" 
+                          d="M380,220 Q400,210 415,230 Q405,250 385,240 Z" 
+                          fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+                </svg>
+            </div>
         </div>
 
-        <div id="content" class="loading">Hava məlumatları yüklənir...</div>
+        <!-- Sağ tərəf: Seçilmiş Rayon və Kəndlərin Detallı Paneli -->
+        <div class="details-section">
+            <div class="card">
+                <h2 id="regionTitle">Rayon seçin</h2>
+                <p id="regionDesc" class="desc">Xəritədən bir rayona yaxınlaşın və ya seçin.</p>
+                
+                <div class="villages-container">
+                    <h3>Qəsəbə və Kəndlər:</h3>
+                    <ul id="villagesList" class="villages-list">
+                        <li>Zəhmət olmasa xəritədən rayon seçin.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
