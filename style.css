@@ -15,153 +15,138 @@ body {
     padding: 20px;
 }
 
-.container {
+.app-container {
+    display: flex;
+    gap: 24px;
+    max-width: 1000px;
     width: 100%;
-    max-width: 440px;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 28px;
-    padding: 28px;
+    padding: 30px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
+.map-section {
+    flex: 1.5;
+    text-align: center;
 }
 
-.city-select {
+.map-section h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.hint {
+    font-size: 13px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+.map-wrapper {
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.az-map {
     width: 100%;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 12px 16px;
-    border-radius: 14px;
-    font-size: 16px;
-    outline: none;
+    max-height: 400px;
+}
+
+/* Rayonların Ümumi Stili və Hover/Böyümə Effekti */
+.region {
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
 }
 
-.city-select option {
-    background: #0f172a;
-    color: #fff;
+.region:hover {
+    fill: #38bdf8 !important;
+    stroke: #ffffff;
+    stroke-width: 4px;
+    filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+    transform: scale(1.15); /* Üzərinə gələndə böyüməsi */
 }
 
-.date-text {
-    text-align: center;
-    color: #94a3b8;
-    font-size: 13px;
-}
-
-.main-weather {
-    text-align: center;
-    margin: 15px 0 30px;
-}
-
-.weather-icon {
-    font-size: 64px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.25));
-}
-
-.temp {
-    font-size: 68px;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -2px;
-    background: linear-gradient(to bottom, #ffffff, #cbd5e1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.condition {
-    font-size: 18px;
-    font-weight: 500;
-    color: #e2e8f0;
-    margin-top: 8px;
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.detail-card {
-    background: rgba(15, 23, 42, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 18px;
-    padding: 14px;
+/* Sağ Tərəf: Detallar Paneli */
+.details-section {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 4px;
 }
 
-.detail-label {
-    font-size: 12px;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.card {
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.detail-value {
-    font-size: 18px;
-    font-weight: 600;
-    color: #f8fafc;
+.card h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #38bdf8;
 }
 
-.forecast-title {
-    font-size: 13px;
+.desc {
+    font-size: 14px;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.villages-container h3 {
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: #94a3b8;
     margin-bottom: 12px;
-    font-weight: 600;
 }
 
-.forecast-list {
+.villages-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 4px;
 }
 
-.forecast-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.villages-list li {
     background: rgba(255, 255, 255, 0.05);
-    padding: 12px 16px;
-    border-radius: 14px;
+    padding: 10px 14px;
+    border-radius: 10px;
     font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
 }
 
-.f-day {
-    font-weight: 500;
-    width: 90px;
+.villages-list li:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.f-icon {
-    font-size: 20px;
+/* Scrollbar dizaynı */
+::-webkit-scrollbar {
+    width: 6px;
 }
-
-.f-temps {
-    font-weight: 600;
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1);
+    border-radius: 10px;
 }
-
-.f-min {
-    color: #94a3b8;
-    margin-left: 6px;
-    font-weight: 400;
-}
-
-.loading {
-    text-align: center;
-    padding: 40px 0;
-    color: #cbd5e1;
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
 }
